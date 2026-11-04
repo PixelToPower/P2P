@@ -1,9 +1,9 @@
+// Inside server/routes/authRoutes.js
 const express = require('express');
-const { signup } = require('../controllers/authController');
-
 const router = express.Router();
+const { signupUser, loginUser } = require('../controllers/authController');
 
-// POST request to /api/auth/signup
-router.post('/signup', signup);
+router.post('/signup', signupUser);
+router.post('/login', loginUser);
 
 module.exports = router;
