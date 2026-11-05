@@ -51,4 +51,10 @@ Login Route: Created the POST /api/auth/login API endpoint that authenticates us
 
 
 
-.
+📅 Day 6: Route Protection & Frontend UI Integration
+
+* Auth Middleware:** Built custom Express middleware (`authMiddleware.js`) to intercept requests and validate incoming JWT tokens from headers.
+  
+* Protected Routes:** Secured private endpoints to block unauthorized requests before they reach the controller logic.
+
+* React UI Integration:** Built and connected `Login.jsx` and `Signup.jsx` frontend components with state management, Axios API connectivity, and token persistence in browser `localStorage`.
