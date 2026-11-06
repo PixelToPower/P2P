@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Auth from './components/Auth';
+import Chat from './components/Chat';
 
-function App() {
-  const [isLogin, setIsLogin] = useState(true);
+export default function App() {
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
-  return (
-    <div>
-      {isLogin ? (
-        <Login switchToSignup={() => setIsLogin(false)} />
-      ) : (
-        <Signup switchToLogin={() => setIsLogin(true)} />
-      )}
-    </div>
-  );
+  if (!token) {
+    return <Auth setToken={setToken} />;
+  }
+
+  return <Chat />;
 }
-
-export default App;
