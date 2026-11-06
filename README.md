@@ -58,3 +58,14 @@ Login Route: Created the POST /api/auth/login API endpoint that authenticates us
 * Protected Routes:** Secured private endpoints to block unauthorized requests before they reach the controller logic.
 
 * React UI Integration:** Built and connected `Login.jsx` and `Signup.jsx` frontend components with state management, Axios API connectivity, and token persistence in browser `localStorage`.
+
+
+
+### Day 7: Frontend Layout & Live P2P Features
+
+* Developed the interactive React Chat and Lobby interface with modern dark styling.
+
+* Implemented real-time online user discovery and clickable peer profiles for direct connection requests.
+
+* Added support for file transfer indicators and dynamic chat room switching.
+
