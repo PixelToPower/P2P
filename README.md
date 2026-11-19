@@ -66,67 +66,6 @@ P2P/
 - MongoDB Atlas or a local MongoDB instance
 - Google OAuth client ID for Google verification
 
-## Environment Variables
-
-Create `server/.env`:
-
-```env
-PORT=5001
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_long_random_jwt_secret
-GOOGLE_CLIENT_ID=your_google_o_auth_client_id
-```
-
-Create `client/client/.env`:
-
-```env
-VITE_GOOGLE_CLIENT_ID=your_google_o_auth_client_id
-```
-
-Never commit `.env` files or credentials.
-
-## Installation
-
-Install backend dependencies:
-
-```bash
-cd server
-npm install
-```
-
-Install frontend dependencies:
-
-```bash
-cd client/client
-npm install
-```
-
-## Running the App
-
-Start the backend:
-
-```bash
-cd server
-npm start
-```
-
-Start the frontend:
-
-```bash
-cd client/client
-npm run dev
-```
-
-Open `http://localhost:5173`.
-
-## Production Build
-
-```bash
-cd client/client
-npm run build
-```
-
-The built frontend is generated in `client/client/dist`.
 
 ## Security
 
@@ -137,6 +76,7 @@ The built frontend is generated in `client/client/dist`.
 - P2P passkeys are hashed before storage.
 - Environment secrets remain in ignored `.env` files.
 
-## Repository
+Currently In work!!
 
-GitHub: https://github.com/PixelToPower/P2P
+Demo:-
+
