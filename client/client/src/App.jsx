@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import Auth from './components/Auth';
 import MessageBubble from './components/MessageBubble';
 import InAppDialog from './components/InAppDialog';
+import { API_URL, apiUrl } from './config/api';
 
 const mergeMessages = (currentMessages, history) => {
   const messagesById = new Map();
@@ -396,7 +397,7 @@ export default function App() {
     if (isLoggedOut) return;
     if (socketRef.current) return;
 
-    const newSocket = io('http://localhost:5001', {
+    const newSocket = io(API_URL, {
       transports: ['websocket', 'polling'],
       reconnection: true
     });
@@ -1396,7 +1397,7 @@ export default function App() {
   };
 
   const copyInviteLink = () => {
-    navigator.clipboard.writeText(`http://localhost:5173/join?ref=${encodeURIComponent(currentUser)}`);
+    navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}join?ref=${encodeURIComponent(currentUser)}`);
     setToastMessage("📋 Invite link copied!");
     setTimeout(() => setToastMessage(''), 3000);
   };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import InAppDialog from './InAppDialog';
+import { apiUrl } from '../config/api';
 
 const testimonials = [
   {
@@ -97,7 +98,7 @@ export default function Auth({ setToken, initialLogin = false }) {
 
     try {
       if (isLogin) {
-        const response = await axios.post('http://localhost:5001/api/auth/login', {
+        const response = await axios.post(apiUrl('/api/auth/login'), {
           email,
           password,
         });
@@ -109,7 +110,7 @@ export default function Auth({ setToken, initialLogin = false }) {
         rememberProfile(user);
         setToken(response.data.token, user);
       } else {
-        const response = await axios.post('http://localhost:5001/api/auth/signup', {
+        const response = await axios.post(apiUrl('/api/auth/signup'), {
           username,
           email,
           password,
@@ -178,7 +179,7 @@ export default function Auth({ setToken, initialLogin = false }) {
       client_id: clientId,
       callback: async credentialResponse => {
         try {
-          const response = await axios.post('http://localhost:5001/api/auth/social-login', {
+          const response = await axios.post(apiUrl('/api/auth/social-login'), {
             provider: 'Google',
             credential: credentialResponse.credential
           });
@@ -194,7 +195,7 @@ export default function Auth({ setToken, initialLogin = false }) {
               confirmLabel: 'Create passkey',
               onConfirm: async passkey => {
                 try {
-                  const passkeyResponse = await axios.post('http://localhost:5001/api/auth/set-app-password', {
+                  const passkeyResponse = await axios.post(apiUrl('/api/auth/set-app-password'), {
                     credential: credentialResponse.credential,
                     password: passkey
                   });
@@ -226,7 +227,7 @@ export default function Auth({ setToken, initialLogin = false }) {
             confirmLabel: 'Continue',
             onConfirm: async passkey => {
               try {
-                const verification = await axios.post('http://localhost:5001/api/auth/verify-app-password', {
+                const verification = await axios.post(apiUrl('/api/auth/verify-app-password'), {
                   credential: credentialResponse.credential,
                   email: user.email,
                   password: passkey
@@ -295,7 +296,7 @@ export default function Auth({ setToken, initialLogin = false }) {
                   confirmLabel: 'Reset passkey',
                   onConfirm: async newPassword => {
                     try {
-                      const response = await axios.post('http://localhost:5001/api/auth/reset-password', {
+                      const response = await axios.post(apiUrl('/api/auth/reset-password'), {
                         credential: credentialResponse.credential,
                         password: newPassword
                       });

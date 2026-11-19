@@ -9,17 +9,36 @@ require('dotenv').config();
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
+const isAllowedOrigin = origin =>
+  !origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*');
+
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: (origin, callback) =>
+      callback(isAllowedOrigin(origin) ? null : new Error('Origin not allowed'), isAllowedOrigin(origin)),
     methods: ["GET", "POST"]
   },
   maxHttpBufferSize: 12 * 1024 * 1024
 });
 
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) =>
+    callback(isAllowedOrigin(origin) ? null : new Error('Origin not allowed'), isAllowedOrigin(origin))
+}));
 app.use(express.json({ limit: '12mb' }));
 app.use('/api/auth', authRoutes);
+
+app.get('/health', (req, res) => {
+  res.json({
+    ok: true,
+    mongoConnected: mongoose.connection.readyState === 1
+  });
+});
 
 if (process.env.MONGO_URI) {
   mongoose.connect(process.env.MONGO_URI)

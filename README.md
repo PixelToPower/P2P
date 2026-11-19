@@ -128,6 +128,38 @@ npm run build
 
 The built frontend is generated in `client/client/dist`.
 
+## Deploy with GitHub
+
+The repository includes:
+
+- `.github/workflows/deploy-pages.yml` for GitHub Pages
+- `render.yaml` for the Node.js, MongoDB, and Socket.IO backend on Render
+
+### 1. Deploy the backend
+
+1. In Render, create a new Blueprint and select this GitHub repository.
+2. Set `MONGO_URI` to the MongoDB Atlas connection string.
+3. Set `GOOGLE_CLIENT_ID` for Google login.
+4. Set `CORS_ORIGINS` to the GitHub Pages URL, for example `https://username.github.io`.
+5. Deploy the `p2p-chat-server` service and copy its HTTPS URL.
+
+### 2. Configure GitHub Pages
+
+1. Open repository **Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+3. Open **Settings → Secrets and variables → Actions**.
+4. Add `VITE_API_URL` with the Render service URL.
+5. Add `VITE_GOOGLE_CLIENT_ID` with the Google OAuth web client ID.
+6. Push or run the **Deploy P2P frontend to GitHub Pages** workflow.
+
+The frontend will be available at:
+
+```text
+https://<github-username>.github.io/P2P/
+```
+
+For local development, `VITE_API_URL` defaults to `http://localhost:5001`.
+
 ## Security
 
 - Passwords are hashed with bcrypt before storage.

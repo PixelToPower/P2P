@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import Sidebar from './Sidebar';
 import ChatWindow from './ChatWindow';
 import ProfilePanel from './ProfilePanel';
+import { API_URL } from '../config/api';
 
 export default function Chat({ setToken }) {
   const [currentUser] = useState(() => localStorage.getItem('username') || 'User');
@@ -32,7 +33,7 @@ export default function Chat({ setToken }) {
   const [showInviteModal, setShowInviteModal] = useState(false);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:5001');
+    const newSocket = io(API_URL);
     setSocket(newSocket);
 
     newSocket.on('connect', () => setIsConnected(true));

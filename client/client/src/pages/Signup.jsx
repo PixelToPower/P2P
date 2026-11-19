@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { apiUrl } from '../config/api';
 
 export default function Signup({ switchToLogin }) {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ export default function Signup({ switchToLogin }) {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/api/auth/signup', {
+      await axios.post(apiUrl('/api/auth/signup'), {
         username,
         email,
         password,
