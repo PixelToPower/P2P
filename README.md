@@ -1,60 +1,142 @@
-🚀 Project: P2P Chat App
+# P2P Chat App
 
+A responsive peer-to-peer chat application built with React, Node.js, Express, MongoDB, and Socket.IO.
 
+## Features
 
-Tech Stack: React (Frontend), Node.js & Express (Backend), MongoDB Atlas (Database), bcrypt & JWT (Security)
+- Real-time direct and global lobby messaging
+- Online/offline status and last-seen activity
+- Connection requests with accept and decline actions
+- Clickable user profiles and connection counts
+- Instagram-style avatars and grouped message bubbles
+- Local message deletion and delete-for-everyone actions
+- Message editing and emoji reactions
+- Reaction summary window showing all users and their reactions
+- Reply, edit, delete, reaction, and swipe interactions
+- Photo, file, voice-note, and in-app camera attachments
+- Attachment preview and optional download
+- Group lobby with active and offline member sections
+- Clear Global P2P Lobby history on the current device
+- App settings, themes, font sizes, privacy controls, notifications, and sound
+- Login/logout and remembered local profiles
+- Google OAuth-ready account verification with local passkey support
+- Mobile, tablet, laptop, and desktop responsive layouts
 
+## Tech Stack
 
-📅 Day 1: Setting the Base
-Project Setup: Created the project folders for frontend (client) and backend (server) so everything stays clean and organized.
+### Frontend
 
-Database Connection: Learned how to link a Node.js backend to a cloud database (MongoDB Atlas) using Mongoose.
+- React 18
+- Vite
+- Socket.IO Client
+- Axios
+- CSS
 
-Environment Variables: Learned how to safely store sensitive database password keys inside a .env file instead of putting them directly in the code.
+### Backend
 
+- Node.js
+- Express
+- Socket.IO
+- MongoDB with Mongoose
+- bcrypt
+- JSON Web Tokens
+- Google Identity Services / google-auth-library
 
+## Project Structure
 
-📅 Day 2: User Models & Port Tweaks
-Mongoose Schema: Built the blueprint (schema) for users, defining rules for storing usernames, emails, and passwords.
+```text
+P2P/
+├── client/client/
+│   ├── src/
+│   │   ├── components/
+│   │   └── App.jsx
+│   └── package.json
+├── server/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+└── README.md
+```
 
-Fixing Port Conflicts: Discovered that macOS uses port 5000 for AirPlay, so we moved our backend server to run smoothly on port 5001.
+## Requirements
 
-Branch Cleanup: Cleaned up Git setup and set master as the primary default branch for the repository.
+- Node.js 18 or newer
+- npm
+- MongoDB Atlas or a local MongoDB instance
+- Google OAuth client ID for Google verification
 
+## Environment Variables
 
+Create `server/.env`:
 
-📅 Day 3: Password Hashing & Signup API
-Password Hashing: Learned that storing plain passwords is dangerous, so we used bcrypt to turn user passwords into secure, unreadable hash text.
+```env
+PORT=5001
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_long_random_jwt_secret
+GOOGLE_CLIENT_ID=your_google_o_auth_client_id
+```
 
-Signup Route: Created the POST /api/auth/signup API endpoint that receives new user data, encrypts the password, and saves them to MongoDB.
+Create `client/client/.env`:
 
-API Testing: Tested the endpoint using Thunder Client inside VS Code and successfully got back a 201 Created status!
+```env
+VITE_GOOGLE_CLIENT_ID=your_google_o_auth_client_id
+```
 
+Never commit `.env` files or credentials.
 
+## Installation
 
-📅 Day 4: Git Workflow & Prep for Login
-Full-Stack Git Tracking: Learned how to stage, commit, and push both the backend server and frontend client folders together to GitHub.
+Install backend dependencies:
 
-Branch Switching: Learned how Git default branches work (main vs master) and how to update repository settings properly on GitHub.
+```bash
+cd server
+npm install
+```
 
-Login & JWT Prep: Prepped the next step for backend development: checking user passwords during login and generating secure JSON Web Tokens (JWT) for login sessions.
+Install frontend dependencies:
 
+```bash
+cd client/client
+npm install
+```
 
+## Running the App
 
-📅 Day 5: Login API & JWT Authentication
+Start the backend:
 
-Password Verification: Learned how bcrypt.compare() checks plain-text login passwords securely against our stored database hashes without ever exposing or saving raw passwords.
+```bash
+cd server
+npm start
+```
 
-JWT Tokens (JSON Web Tokens): Implemented digital session tokens using jsonwebtoken that act as secure "hall passes," granting users persistent access after a successful login.
+Start the frontend:
 
-Login Route: Created the POST /api/auth/login API endpoint that authenticates user credentials and returns a signed JWT token valid for 1 day.
+```bash
+cd client/client
+npm run dev
+```
 
+Open `http://localhost:5173`.
 
+## Production Build
 
-📅 Day 6: Route Protection & Frontend UI Integration
+```bash
+cd client/client
+npm run build
+```
 
-* Auth Middleware:** Built custom Express middleware (`authMiddleware.js`) to intercept requests and validate incoming JWT tokens from headers.
-  
-* Protected Routes:** Secured private endpoints to block unauthorized requests before they reach the controller logic.
+The built frontend is generated in `client/client/dist`.
 
-* React UI Integration:** Built and connected `Login.jsx` and `Signup.jsx` frontend components with state management, Axios API connectivity, and token persistence in browser `localStorage`.
+## Security
+
+- Passwords are hashed with bcrypt before storage.
+- JWTs are used for authenticated sessions.
+- Google Identity Services verifies Google account identity.
+- Gmail passwords are never collected or stored by P2P.
+- P2P passkeys are hashed before storage.
+- Environment secrets remain in ignored `.env` files.
+
+## Repository
+
+GitHub: https://github.com/PixelToPower/P2P

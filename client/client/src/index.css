@@ -1,3 +1,487 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.p2p-app-shell {
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100dvh !important;
+}
+
+.p2p-sidebar,
+.p2p-chat-window,
+.p2p-profile-panel {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.p2p-chat-window {
+  flex: 1 1 0%;
+}
+
+.p2p-mobile-back {
+  display: none;
+}
+
+.p2p-chat-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.p2p-modal-card,
+.p2p-user-profile-card,
+.p2p-dialog-card {
+  box-sizing: border-box;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+
+.p2p-dialog-overlay {
+  overflow-y: auto;
+}
+
+.auth-page {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.p2p-settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.p2p-settings-card {
+  width: 500px;
+  max-width: calc(100vw - 32px);
+  padding: 24px;
+}
+
+.p2p-settings-section {
+  padding: 14px 0;
+  border-top: 1px solid #262626;
+}
+
+.p2p-settings-section h3 {
+  margin: 0 0 6px;
+  color: #3797f0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.p2p-settings-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: #1a1a1a;
+}
+
+.p2p-settings-account > div {
+  min-width: 0;
+}
+
+.p2p-settings-account strong,
+.p2p-settings-account span {
+  display: block;
+  overflow: hidden;
+  color: #f5f5f5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p2p-settings-account span {
+  margin-top: 3px;
+  color: #a8a8a8;
+  font-size: 11px;
+}
+
+.p2p-settings-account button,
+.p2p-settings-select-row select {
+  flex-shrink: 0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #262626;
+  color: #f5f5f5;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.p2p-settings-select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.p2p-settings-select-row span {
+  min-width: 0;
+}
+
+.p2p-settings-select-row strong,
+.p2p-settings-select-row small {
+  display: block;
+}
+
+.p2p-settings-select-row strong {
+  color: #f5f5f5;
+  font-size: 13px;
+}
+
+.p2p-settings-select-row small {
+  margin-top: 3px;
+  color: #a8a8a8;
+  font-size: 11px;
+}
+
+.p2p-logout-button {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.p2p-theme-light {
+  background-color: #f8fafc !important;
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-sidebar,
+.p2p-theme-light .p2p-sidebar > div,
+.p2p-theme-light .p2p-profile-panel {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.p2p-theme-light .p2p-chat-window {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.p2p-theme-light .p2p-chat-header,
+.p2p-theme-light .p2p-chat-composer {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.p2p-theme-light .p2p-chat-header-profile,
+.p2p-theme-light .p2p-mobile-back {
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-chat-messages {
+  background-color: #f8fafc !important;
+}
+
+.p2p-theme-light .p2p-chat-composer form {
+  background-color: #f1f5f9 !important;
+}
+
+.p2p-theme-light .p2p-chat-composer input {
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-message-content.p2p-incoming-message {
+  background: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-message-bubble > span {
+  color: #64748b !important;
+}
+
+.p2p-theme-light .p2p-sidebar input {
+  background-color: #f1f5f9 !important;
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-profile-panel h3,
+.p2p-theme-light .p2p-profile-panel h4,
+.p2p-theme-light .p2p-profile-panel strong {
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-profile-panel button {
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-settings-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.p2p-theme-light .p2p-settings-card h2,
+.p2p-theme-light .p2p-settings-card strong {
+  color: #1f2937 !important;
+}
+
+.p2p-theme-light .p2p-settings-section {
+  border-color: #e2e8f0;
+}
+
+.p2p-theme-light .p2p-settings-account {
+  background-color: #f1f5f9;
+}
+
+.p2p-theme-light .p2p-settings-account span,
+.p2p-theme-light .p2p-settings-select-row small {
+  color: #64748b;
+}
+
+.p2p-theme-light .p2p-settings-account button,
+.p2p-theme-light .p2p-settings-select-row select {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1f2937;
+}
+
+.p2p-font-small .p2p-message-content {
+  font-size: 12px !important;
+}
+
+.p2p-font-large .p2p-message-content {
+  font-size: 16px !important;
+}
+
+@media (max-width: 1100px) {
+  .p2p-profile-panel {
+    display: none !important;
+  }
+
+  .p2p-app-shell.p2p-show-mobile-info .p2p-profile-panel {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: 30;
+    display: flex !important;
+    width: min(320px, 100vw) !important;
+    max-width: 100%;
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .p2p-mobile-info-close {
+    display: flex !important;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: -20px -12px 12px 0;
+    border: 0;
+    background: transparent;
+    color: #a8a8a8;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .p2p-sidebar {
+    width: 300px !important;
+  }
+}
+
+.p2p-mobile-info-close {
+  display: none;
+}
+
+.p2p-message-bubble:hover .p2p-desktop-message-action {
+  display: flex !important;
+}
+
+@media (max-width: 760px) {
+  .p2p-app-shell {
+    width: 100vw !important;
+    height: 100dvh !important;
+  }
+
+  .p2p-sidebar {
+    width: 100% !important;
+    height: 100%;
+    border-right: 0 !important;
+  }
+
+  .p2p-chat-window {
+    display: none !important;
+    width: 100%;
+    height: 100%;
+    border-right: 0 !important;
+  }
+
+  .p2p-mobile-chat-active .p2p-sidebar {
+    display: none !important;
+  }
+
+  .p2p-mobile-chat-active .p2p-chat-window {
+    display: flex !important;
+  }
+
+  .p2p-app-shell.p2p-show-mobile-info .p2p-profile-panel {
+    width: min(340px, 92vw) !important;
+    padding: 28px 20px !important;
+  }
+
+  .p2p-chat-header {
+    height: 60px !important;
+    flex-shrink: 0;
+    padding: 0 12px !important;
+    gap: 8px;
+  }
+
+  .p2p-chat-header-profile {
+    min-width: 0;
+    flex: 1;
+    gap: 8px !important;
+  }
+
+  .p2p-chat-header h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .p2p-chat-header > span {
+    flex-shrink: 0;
+    font-size: 10px !important;
+  }
+
+  .p2p-mobile-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 36px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #f5f5f5;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .p2p-chat-messages {
+    padding: 14px !important;
+    gap: 6px !important;
+  }
+
+  .p2p-message-bubble {
+    max-width: 88% !important;
+  }
+
+  .p2p-chat-composer {
+    padding: 12px !important;
+    padding-bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .p2p-desktop-message-action {
+    display: none !important;
+  }
+
+  .p2p-attachment-menu {
+    left: 12px !important;
+    bottom: 66px !important;
+    width: min(260px, calc(100vw - 24px)) !important;
+  }
+
+  .p2p-modal-card {
+    width: calc(100vw - 28px) !important;
+    max-width: 420px;
+    max-height: calc(100dvh - 28px);
+    padding: 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .p2p-settings-card {
+    padding: 18px !important;
+  }
+
+  .p2p-user-profile-card {
+    max-height: calc(100dvh - 28px);
+    padding: 20px !important;
+  }
+
+  .p2p-dialog-card {
+    width: calc(100vw - 28px) !important;
+    max-height: calc(100dvh - 28px);
+    padding: 20px !important;
+  }
+
+  .auth-page {
+    align-items: flex-start !important;
+    min-height: 100dvh !important;
+    overflow-y: auto;
+    padding: 14px !important;
+  }
+
+  .auth-card {
+    display: block !important;
+    width: 100% !important;
+    max-width: 520px;
+    height: auto !important;
+    max-height: none;
+    margin: auto;
+    border-radius: 22px !important;
+  }
+
+  .auth-card > div:first-child {
+    padding: 28px 22px !important;
+  }
+
+  .auth-card > div:last-child {
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .p2p-chat-header {
+    padding: 0 8px !important;
+  }
+
+  .p2p-chat-header > span {
+    font-size: 9px !important;
+  }
+
+  .p2p-message-bubble {
+    max-width: 92% !important;
+  }
+
+  .auth-card > div:first-child {
+    padding: 22px 16px !important;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .auth-card {
+    width: calc(100vw - 40px) !important;
+    height: min(620px, calc(100dvh - 40px)) !important;
+  }
+
+  .auth-card > div:first-child {
+    padding: 30px !important;
+  }
+}

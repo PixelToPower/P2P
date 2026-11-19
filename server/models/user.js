@@ -19,6 +19,28 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
+    },
+    googleId: {
+        type: String,
+        default: null,
+        index: true
+    },
+    authProvider: {
+        type: String,
+        enum: ['local', 'google', 'apple'],
+        default: 'local'
+    },
+    appPasswordSet: {
+        type: Boolean,
+        default: true
+    },
+    emailVerified: {
+        type: Boolean,
+        default: false
+    },
+    verifiedAt: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true // Automatically adds 'createdAt' and 'updatedAt' fields
