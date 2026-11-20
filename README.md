@@ -6,7 +6,7 @@ A responsive peer-to-peer chat application built with React, Node.js, Express, M
 
 Demo: https://pixeltopower.github.io/P2P/
 - **Browse the source:** https://github.com/PixelToPower/P2P
-- **Download the source ZIP:** https://github.com/PixelToPower/P2P/archive/refs/heads/master.zip
+- **Download source code (ZIP archive):** https://github.com/PixelToPower/P2P/archive/refs/heads/master.zip
 
 The hosted page is the frontend. Real-time chat and account features need the backend and deployment settings configured using the steps below.
 
