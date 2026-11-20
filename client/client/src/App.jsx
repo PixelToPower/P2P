@@ -173,7 +173,9 @@ export default function App() {
   const [userId, setUserId] = useState(() => localStorage.getItem('user_uuid') || `user-${Math.random().toString(36).substring(2, 9)}`);
   const [currentUser, setCurrentUser] = useState(() => localStorage.getItem('username') || `User-${Math.random().toString(36).substring(2, 5)}`);
   const [userAvatar, setUserAvatar] = useState(() => localStorage.getItem('user_avatar') || '');
-  const [isLoggedOut, setIsLoggedOut] = useState(() => localStorage.getItem('p2p_logged_out') === 'true');
+  const [isLoggedOut, setIsLoggedOut] = useState(() =>
+    localStorage.getItem('p2p_logged_out') === 'true' || !localStorage.getItem('token')
+  );
   const [settings, setSettings] = useState(() => loadSettings(localStorage.getItem('user_uuid') || 'guest'));
   const settingsRef = useRef(settings);
   const settingsOwnerRef = useRef(localStorage.getItem('user_uuid') || 'guest');
